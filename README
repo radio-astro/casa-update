@@ -1,0 +1,14 @@
+# prepare
+
+$ sudo apt-get install git-core git-svn ruby
+$ sudo gem install svn2git
+
+# gettings started
+
+svn2git https://svn.cv.nrao.edu/svn/casa/  --no-minimize-url --authors /home/gijs/Work/casa/casa-authors2.txt --metadata
+
+# to update
+
+cd /scratch/casa/git
+svn2git --rebase
+for i in `git branch  | grep -v "*" | grep -v personal `; do git checkout $i; git push origin $i; done;
