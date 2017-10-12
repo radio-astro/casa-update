@@ -1,14 +1,27 @@
+# introduction
+
+script to sync
+
+https://svn.cv.nrao.edu/svn/casa/
+
+with
+
+https://github.com/radio-astro/casa
+
 # prepare
 
 $ sudo apt-get install git-core git-svn ruby
 $ sudo gem install svn2git
 
-# gettings started
+# first run (will take long)
 
-svn2git https://svn.cv.nrao.edu/svn/casa/  --no-minimize-url --authors /home/gijs/Work/casa/casa-authors2.txt --metadata
+svn2git https://svn.cv.nrao.edu/svn/casa/  --no-minimize-url --authors authors.txt --metadata
 
 # to update
 
-cd /scratch/casa/git
-svn2git --rebase
-for i in `git branch  | grep -v "*" | grep -v personal `; do git checkout $i; git push origin $i; done;
+from the git folder run:
+
+$ svn2git --rebase
+$ for i in `git branch  | grep -v "*" | grep -v personal `; do git checkout $i; git push origin $i; done;
+
+Note that we can't just push all branches since some of them are broken.
